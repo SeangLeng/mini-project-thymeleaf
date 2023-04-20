@@ -1,0 +1,12 @@
+<div th:fragment="container" class="container">
+  <div class="d-flex flex-sm-column flex-lg-row">
+    <div class="left w-25">
+      <h3>New social from cambodia</h3>
+      <p>Free posting and sharing article with your contents</p>
+      <hr>
+      <h4>Popular Category</h4>
+      <div th:replace="~{fragments/category::category-list}"></div>
+    </div>
+    <div class="right w-75"></div>
+  </div>
+</div>

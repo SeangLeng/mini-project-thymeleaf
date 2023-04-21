@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 @Repository
 public class ArticleRepository {
     List<Articles> article = new ArrayList<>(){{
-        add(new Articles(101, "is the best", "https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg", new AuthorRespository().getAllAuthor().get(0)));
-        add(new Articles(102, "is not enough", "https://wallpapers.com/images/featured/axtz0jnhj20oq57g.jpg", new AuthorRespository().getAllAuthor().get(1)));
-        add(new Articles(103, "Id is not better", "https://wallpapercg.com/download/monkey-d-luffy-6942x3905-7772.png", new AuthorRespository().getAllAuthor().get(2)));
-        add(new Articles(104, "this is the most important", "https://avatars.githubusercontent.com/u/27896633?v=4", new AuthorRespository().getAllAuthor().get(2)));
+        add(new Articles(101, "Tony Stark is the wealthy son of industrialist and weapons manufacturer Howard Stark and his wife, Maria.", new AuthorRespository().getAllAuthor().get(0)));
+        add(new Articles(102, "Bitten by a radioactive spider, Peter Parker's arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles", new AuthorRespository().getAllAuthor().get(1)));
+        add(new Articles(103, "Monkey D. Luffy (/ˈluːfi/ LOO-fee) (Japanese: モンキー・D・ルフィ, Hepburn: Monkī Dī Rufi, [ɾɯɸiː]), also known as \"Straw Hat\" Luffy, is a fictional character and the protagonist of the One Piece manga series, created by Eiichiro Oda.\n", new AuthorRespository().getAllAuthor().get(2)));
+        add(new Articles(104, "Monkey D. Luffy, also known as \"Straw Hat Luffy\" and commonly as \"Straw Hat\", is the founder and captain of the increasingly infamous and powerful Straw Hat Pirates, as well as the most powerful of its top fighters.",  new AuthorRespository().getAllAuthor().get(2)));
     }};
 
     public List<Articles> getAllArticle(){

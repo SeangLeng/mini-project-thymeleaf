@@ -15,4 +15,5 @@ public class Authors {
     private String bio;
     private String email;
     private String address;
+    private String imgUrl = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
 }

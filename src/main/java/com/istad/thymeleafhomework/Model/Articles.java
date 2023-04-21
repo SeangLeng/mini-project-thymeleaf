@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class Articles {
     private int id;
     private String description;
-    private String imgUrl = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png";
     private Authors author;
 }

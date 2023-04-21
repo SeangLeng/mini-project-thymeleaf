@@ -14,23 +14,33 @@
     <div class="right w-75">
       <div class="container w-50">
         <div class="row">
-          <div th:replace="~{fragments/cards::card-Fragment}" th:each="allArticles:${allArticle}">
-            <img th:src="${allArticles.imgUrl}"
+          <div class="card mt-5 col-12 p-0 rounded-5 shadow-lg" th:each="allArticles:${allArticle}">
+            <img th:src="${allArticles.author.imgUrl}"
                  class="card-img-top" alt="..."/>
-            <img th:src="${allArticles.author.profileURLs}" alt=""
-                 width="100px" height="100px" class="rounded-circle">
-            <div class="mx-2">
-              <h4 class="card-title" th:text="${allArticles.author.name}"></h4>
-              <p class="text-danger" th:text="${allArticles.author.name}"></p>
+            <div class="card-body">
+              <div class="d-flex d-sm-block d-lg-flex justify-content-start align-items-center" >
+                <img th:src="${allArticles.author.profileURLs}" alt=""
+                     width="100px" height="100px" class="rounded-circle"/>
+                <div class="mx-2">
+                  <h4 class="card-title" th:text="${allArticles.author.name}"></h4>
+                  <div class="d-flex text-danger">
+                    @
+                    <span class="text-danger" th:text="${allArticles.author.name}"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <a href="#" class="btn bg-danger-subtle">Programming</a>
+              </div>
+              <p class="card-text mt-2" th:text="${allArticles.description}"></p>
+              <div class="d-flex justify-content-between align-item-center">
+                <a th:href="@{/author-profilev-view/{viewID}/{UserPost}(viewID = ${allArticles.id}, UserPost=${allArticles.author.name})}" class="btn btn-primary m-2">view profile</a>
+                <a href="#" class="btn btn-warning m-2">Delete profile</a>
+                <a href="#" class="btn btn-primary m-2">Update profile</a>
+              </div>
             </div>
-            <p class="card-text" th:text="${allArticles.author.bio}">
-            <div class="d-flex justify-content-between align-item-center">
-              <a href="#" class="btn btn-primary m-2">view profile</a>
-              <a href="#" class="btn btn-warning m-2">Delete profile</a>
-              <a href="#" class="btn btn-primary m-2">Update profile</a>
-            </div>
-            </p>
           </div>
+
         </div>
         </div>
       </div>

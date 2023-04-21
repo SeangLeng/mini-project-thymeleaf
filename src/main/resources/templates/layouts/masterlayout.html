@@ -10,8 +10,13 @@
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE"> ISTAD </title>
 </head>
 <body>
-    <div th:replace="~{fragments/navbar::navbar-fragment}"></div>
+    <header>
+        <div th:replace="~{fragments/navbar::navbar-fragment}"></div>
+    </header>
     <div layout:fragment="content-body"></div>
-    <div th:replace="~{fragments/footer::footer}"></div>
+    <footer>
+        <div th:replace="~{fragments/footer::footer}"></div>
+    </footer>
+
 </body>
 </html>

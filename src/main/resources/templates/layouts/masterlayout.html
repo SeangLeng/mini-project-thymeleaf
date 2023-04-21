@@ -11,8 +11,7 @@
 </head>
 <body>
     <div th:replace="~{fragments/navbar::navbar-fragment}"></div>
-    <div th:replace="~{fragments/container::container}"></div>
-
+    <div layout:fragment="content-body"></div>
     <div th:replace="~{fragments/footer::footer}"></div>
 </body>
 </html>

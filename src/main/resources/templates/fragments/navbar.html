@@ -1,4 +1,4 @@
-<nav th:fragment="navbar-fragment" class="navbar navbar-expand-lg bg-body-tertiary">
+<nav th:fragment="navbar-fragment" class="navbar navbar-expand-lg bg-body-tertiary position-fixed t-0 w-100 z-2">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="https://i.pinimg.com/736x/2b/e6/80/2be680292cdea62cd8495a9d5a5866c0.jpg" alt="logo.png" width="75px" class="rounded-circle">
@@ -9,28 +9,23 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">All users</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Something else</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Category
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Programmer</a></li>
-            <li><a class="dropdown-item" href="#">Education</a></li>
-            <li><a class="dropdown-item" href="#">Sport</a></li>
-            <li><a class="dropdown-item" href="#">Science</a></li>
-            <li><a class="dropdown-item" href="#">Biology</a></li>
+            <li th:each="category : ${categories}">
+              <a class="dropdown-item" href="#" th:text="${category.categoriesList}"></a>
+            </li>
           </ul>
       </ul>
-      <span class="navbar-text">
-        Anime social media
+      <span class="navbar-text text-dark">
+        New social media, new world for all of you!
       </span>
     </div>
   </div>

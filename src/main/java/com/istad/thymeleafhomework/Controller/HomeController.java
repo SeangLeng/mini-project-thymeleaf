@@ -39,7 +39,7 @@ public class HomeController {
     @GetMapping("/index")
     public String ReturnHomepage(Model model){
         model.addAttribute("categories", categoryService.getAllCategory());
-        model.addAttribute("allArticle", articleService.getAllArticle().stream().sorted(((o1, o2) -> o2.getId()-o1.getId())));
+        model.addAttribute("article", articleService.getAllArticle().stream().sorted(((o1, o2) -> o2.getId()-o1.getId())));
         return "index";
     }
     //author-profile/102

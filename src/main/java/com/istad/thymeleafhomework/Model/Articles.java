@@ -12,5 +12,5 @@ public class Articles {
     private String description;
     private Authors author;
     private Category[] category;
-    private String post_img;
+    private String post_img = "https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg";
 }

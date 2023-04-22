@@ -9,6 +9,7 @@ import com.istad.thymeleafhomework.service.CategoryService;
 import com.istad.thymeleafhomework.service.serviceIMP.ArticleIMP;
 import com.istad.thymeleafhomework.service.serviceIMP.AuthorIMP;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import jakarta.validation.Valid;
@@ -66,8 +67,14 @@ public class HomeController {
     }
 
     @PostMapping("/handleAddArticle")
-    public String handleArticle(@ModelAttribute RequestPost articles){
-        System.out.println("Here is the value of article: " + articles);
+    public String handleArticle(@Valid @ModelAttribute ("article") RequestPost articles, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("authors", authorSerive.getAllAuthor());
+            model.addAttribute("categories",categoryService.getAllCategory());
+            return "/add-new-post";
+        }
+
         Articles newArticle = new Articles();
         newArticle.setDescription(articles.getDescription());
         newArticle.setCategory(newArticle.getCategory());
@@ -78,7 +85,7 @@ public class HomeController {
         for (int cate : articles.getCategoryID()){
             categories.add(categoryService.getAllCategory().stream().filter(e->e.getId() == cate).findFirst().orElse(null));
         }
-        Category[] categories1 = categories.toArray(new Category[0]);
+        Category[] categories1 = categories.toArray(new Category[categories.size()]);
         newArticle.setCategory(categories1);
 
         articleService.addNewArticle(newArticle);

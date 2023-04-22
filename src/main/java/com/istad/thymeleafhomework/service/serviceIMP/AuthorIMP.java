@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class AuthorIMP implements AuthorsInterface {
-    AuthorRespository authorRespository;
+    private AuthorRespository authorRespository;
     AuthorIMP() {
         authorRespository = new AuthorRespository();
     }

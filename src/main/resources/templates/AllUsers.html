@@ -29,8 +29,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <a href="#" class="btn bg-danger-subtle">Programming</a>
+                    <div class="mt-4 d-flex">
+                        <div th:each="category : ${allArticles.category}">
+                            <a href="#" class="btn bg-danger-subtle me-2" th:text="${category.categoriesList}"></a>
+                        </div>
                     </div>
                     <p class="card-text mt-2" th:text="${Author.bio}"></p>
                     <div class="d-flex justify-content-between align-item-center">

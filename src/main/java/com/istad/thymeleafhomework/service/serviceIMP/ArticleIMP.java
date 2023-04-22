@@ -29,4 +29,10 @@ public class ArticleIMP implements ArticlesInterFace {
     public List<Articles> getArticleByAuthorName(String name) {
         return articleRepository.getArticleByAuthorName(name);
     }
+
+
+    @Override
+    public void addNewArticle(Articles articles) {
+        articleRepository.addNewArticle(articles);
+    }
 }

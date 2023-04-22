@@ -1,5 +1,5 @@
 <div  th:fragment="card-Fragment" class="card col-lg-4 col-sm-12 col-md-6 p-0 rounded-5 shadow-lg" th:each="allArticles:${allArticle}">
-        <img th:src="${allArticles.author.imgUrl}"
+        <img th:src="${allArticles.post_img}"
              class="card-img-top" alt="..."/>
         <div class="card-body">
             <div class="d-flex d-sm-block d-lg-flex justify-content-start align-items-center" >
@@ -13,8 +13,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-4">
-                <a href="#" class="btn bg-danger-subtle">Programming</a>
+            <div class="mt-4 d-flex" th:each="category : ${allArticles.category}" >
+                <a href="#" class="btn bg-danger-subtle" th:text="${category.categoriesList}"></a>
             </div>
             <p class="card-text mt-2" th:text="${allArticles.author.bio}"></p>
             <div class="d-flex justify-content-between align-item-center">

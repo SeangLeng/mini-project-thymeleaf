@@ -11,4 +11,6 @@ public class Articles {
     private int id;
     private String description;
     private Authors author;
+    private Category[] category;
+    private String post_img;
 }

@@ -8,4 +8,6 @@ public interface ArticlesInterFace {
     List<Articles> getAllArticle();
     Articles getViewDetailByID(int id);
     List<Articles> getArticleByAuthorName(String name);
+
+    void addNewArticle (Articles articles);
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http//www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/masterlayout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Add-new-post</title>
+</head>
+<body>
+    <div layout:fragment="content-body">
+        <div class="container">
+
+            <div class="row d-flex flex-row justify-content-center align-items-center" th:object="${article}">
+                <div class="col" >
+                    <h1>Add new post</h1>
+                    <form th:action="@{handleAddArticle}" method="POST">
+                        <select th:field="*{authorID}" class="form-select mt-5" aria-label="Default select example">
+                            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">One</option>
+                        </select>
+                        <div class="mb-3 mt-4">
+                            <label for="exampleInputEmail1" class="form-label">Description</label>
+                            <textarea th:field="*{description}" type="text" class="form-control" id="exampleInputEmail1"></textarea>
+                            <div id="emailHelp" class="form-text">Write your description here</div>
+                        </div>
+                        <label>Choose Category that feed your content</label>
+                            <select th:field="*{categoryID}" class="form-select" multiple aria-label="multiple select example">
+                                <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.categoriesList}" class="fs-5">One</option>
+                            </select>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <button type="submit" class="btn btn-primary bg-success mt-4 me-4 border-0">Add new post</button>
+                            <button type="submit" class="btn btn-primary bg-danger mt-4 border-0">Cancel add</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <img src="https://th.bing.com/th/id/R.72a399ecc14b0ed6f364c0984cbb77d9?rik=MiQ2RBTPZBOjWw&pid=ImgRaw&r=0"
+                         alt="PreviewImage" width="100%">
+<!--                    <input th:field="*{}" class="form-control" type="file" name="file" id="fileUpload">-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function loadImage(event){
+            let image = document.getElementById('output-images')
+            image.src = URL.createObjectURL(event.target.files[0])
+        }
+    </script>
+</body>
+</html>

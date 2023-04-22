@@ -13,8 +13,9 @@ public class ServiceImplement implements CategoryService {
     ServiceImplement() {
         categoryRepository = new CategoryRepository();
     }
+
     @Override
-    public List<Category> getAllArticle() {
+    public List<Category> getAllCategory() {
         return categoryRepository.getAllCategory();
     }
 }

@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public class CategoryRepository {
     List<Category> categories = new ArrayList<>(){{
-        add(new Category("Programming"));
-        add(new Category("Sport"));
-        add(new Category("Education"));
-        add(new Category("Science"));
-        add(new Category("Biology"));
+        add(new Category(1, "Sport"));
+        add(new Category(2, "Programming"));
+        add(new Category(3, "Education"));
+        add(new Category(4, "Science"));
+        add(new Category(5, "Biology"));
     }};
 
     public List<Category> getAllCategory(){

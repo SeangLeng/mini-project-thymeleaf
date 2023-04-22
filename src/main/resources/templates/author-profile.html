@@ -46,7 +46,7 @@
                             <div class="row">
                                 <div>
                                     <div class="card col-12 mt-3 p-0 rounded-5 shadow-lg" th:each="PostedCard:${UserPost}">
-                                        <img th:src="${PostedCard.author.imgUrl}"
+                                        <img th:src="${PostedCard.post_img}"
                                              class="card-img-top" alt="..."/>
                                         <div class="card-body">
                                             <div class="d-flex d-sm-block d-lg-flex justify-content-start align-items-center" >
@@ -60,8 +60,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-4">
-                                                <a href="#" class="btn bg-danger-subtle">Programming</a>
+                                            <div class="mt-4 d-flex">
+                                                <div th:each="category : ${PostedCard.category}">
+                                                    <a href="#" class="btn bg-danger-subtle me-2" th:text="${category.categoriesList}"></a>
+                                                </div>
                                             </div>
                                             <p class="card-text mt-2" th:text="${PostedCard.author.bio}"></p>
                                             <div class="d-flex justify-content-between align-item-center">

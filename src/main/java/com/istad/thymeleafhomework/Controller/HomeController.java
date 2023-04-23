@@ -54,7 +54,7 @@ public class HomeController {
     @GetMapping("/AllUser")
     public String allUsersDisplay(Model model){
         model.addAttribute("Authors", authorSerive.getAllAuthor());
-        model.addAttribute("allArticle", articleService.getAllArticle());
+        model.addAttribute("article", articleService.getAllArticle());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "AllUsers";
     }

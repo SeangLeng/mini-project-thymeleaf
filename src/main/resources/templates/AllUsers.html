@@ -29,8 +29,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 d-flex">
-                        <div th:each="category : ${allArticles.category}">
+                    <div class="mt-4 d-flex" style="overflow: scroll">
+                        <div th:each="category : ${categories}">
                             <a href="#" class="btn bg-danger-subtle me-2" th:text="${category.categoriesList}"></a>
                         </div>
                     </div>

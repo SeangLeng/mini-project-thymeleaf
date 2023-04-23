@@ -37,18 +37,22 @@
                     </form>
                 </div>
                 <div class="col">
-                    <img id="UploadImages" src="https://th.bing.com/th/id/R.72a399ecc14b0ed6f364c0984cbb77d9?rik=MiQ2RBTPZBOjWw&pid=ImgRaw&r=0"
+                    <img id="preview" src="https://th.bing.com/th/id/R.72a399ecc14b0ed6f364c0984cbb77d9?rik=MiQ2RBTPZBOjWw&pid=ImgRaw"
                          alt="PreviewImage" width="100%">
-                    <input th:field="*{file}" name="file" class="form-control" onchange="loadImage(event)" type="file">
+                    <input accept="image/png, image/gif, image/jpeg" name="thumbnail" class="form-control"
+                           onchange="previewFile(this)" type="file">
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function loadImage(event){
-            let image = document.getElementById('UploadImages')
-            image.src = URL.createObjectURL(event.target.files[0])
-        }
-    </script>
+    <th:block layout:fragment="script">
+        <script>
+            function previewFile(event) {
+                var preview = document.getElementById('preview');
+                preview.src = URL.createObjectURL(event.files[0]);
+            }
+        </script>
+    </th:block>
+
 </body>
 </html>

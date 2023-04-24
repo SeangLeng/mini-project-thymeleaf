@@ -6,6 +6,7 @@ import com.istad.thymeleafhomework.Model.Category;
 import com.istad.thymeleafhomework.Model.request.RequestPost;
 import com.istad.thymeleafhomework.repository.CategoryRepository;
 import com.istad.thymeleafhomework.service.CategoryService;
+import com.istad.thymeleafhomework.service.FileUploadService;
 import com.istad.thymeleafhomework.service.serviceIMP.ArticleIMP;
 import com.istad.thymeleafhomework.service.serviceIMP.AuthorIMP;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,13 @@ public class HomeController {
     CategoryService categoryService;
     ArticleIMP articleService;
     AuthorIMP authorSerive;
+    FileUploadService fileUploadService;
     @Autowired
-    public HomeController(CategoryService categoryService, ArticleIMP articleService, AuthorIMP authorSerive) {
+    public HomeController(CategoryService categoryService, ArticleIMP articleService, AuthorIMP authorSerive, FileUploadService fileUploadService) {
         this.categoryService = categoryService;
         this.articleService = articleService;
         this.authorSerive = authorSerive;
+        this.fileUploadService = fileUploadService;
     }
 
     @GetMapping("/index")
@@ -40,7 +43,7 @@ public class HomeController {
         model.addAttribute("article", articleService.getAllArticle().stream().sorted(((o1, o2) -> o2.getId()-o1.getId())));
         return "index";
     }
-    //author-profile/102
+
     @GetMapping("/author-profilev-view/{viewID}/{name}")
     public String viewArticleCardDetailByid(@PathVariable int viewID, @PathVariable String name,  Model model){
         model.addAttribute("UserPost", articleService.getArticleByAuthorName(name));
@@ -49,12 +52,24 @@ public class HomeController {
         return "author-profile";
     }
 
+    @GetMapping ("/category/{category}")
+    public String ViewCategoryType(@PathVariable String category, Model model){
+        model.addAttribute("categories", categoryService.getALlCategoryByName(category));
+        return "category-type";
+    }
+
     @GetMapping("/AllUser")
     public String allUsersDisplay(Model model){
         model.addAttribute("Authors", authorSerive.getAllAuthor());
         model.addAttribute("article", articleService.getAllArticle());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "AllUsers";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteArticle(@PathVariable("id") String id){
+        articleService.deleteArticleByID(Integer.parseInt(id));
+        return "redirect:/index";
     }
     @GetMapping("new-article-form")
     public String getUserForm(Model model){
@@ -67,15 +82,24 @@ public class HomeController {
     @PostMapping("/handleAddArticle")
     public String handleArticle(@Valid @ModelAttribute ("article") RequestPost articles,
                                 BindingResult bindingResult,
-                                Model model){
+                                Model model
 
+                                ){
         if(bindingResult.hasErrors()){
             model.addAttribute("authors", authorSerive.getAllAuthor());
             model.addAttribute("categories",categoryService.getAllCategory());
             return "/add-new-post";
         }
-
         Articles newArticle = new Articles();
+
+        try {
+            String filename = "http://localhost:8080/images/" + fileUploadService.uploadFile(articles.getFile());
+            newArticle.setPost_img(filename);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Error happened!");
+        }
+
         newArticle.setDescription(articles.getDescription());
         newArticle.setCategory(newArticle.getCategory());
         Authors authors = authorSerive.getAllAuthor().stream().filter(e->e.getId() == articles.getAuthorID()).findFirst().orElse(null);
@@ -89,6 +113,6 @@ public class HomeController {
         newArticle.setCategory(categories1);
 
         articleService.addNewArticle(newArticle);
-        return "redirect:index";
+        return "redirect:/index";
     }
 }

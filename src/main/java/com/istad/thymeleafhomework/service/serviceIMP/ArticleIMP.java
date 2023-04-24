@@ -35,4 +35,9 @@ public class ArticleIMP implements ArticlesInterFace {
     public void addNewArticle(Articles articles) {
         articleRepository.addNewArticle(articles);
     }
+
+    @Override
+    public void deleteArticleByID(int id) {
+        articleRepository.deleteArticle(id);
+    }
 }

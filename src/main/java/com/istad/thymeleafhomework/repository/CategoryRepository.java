@@ -1,10 +1,13 @@
 package com.istad.thymeleafhomework.repository;
 
+import com.istad.thymeleafhomework.Model.Articles;
 import com.istad.thymeleafhomework.Model.Category;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Repository
 public class CategoryRepository {
@@ -18,5 +21,8 @@ public class CategoryRepository {
 
     public List<Category> getAllCategory(){
         return categories;
+    }
+    public List<Category> getCategoriesByName(String name){
+        return categories.stream().filter(e-> Objects.equals(e.getCategoriesList(), name)).toList();
     }
 }

@@ -18,4 +18,9 @@ public class ServiceImplement implements CategoryService {
     public List<Category> getAllCategory() {
         return categoryRepository.getAllCategory();
     }
+
+    @Override
+    public List<Category> getALlCategoryByName(String name) {
+        return categoryRepository.getCategoriesByName(name);
+    }
 }

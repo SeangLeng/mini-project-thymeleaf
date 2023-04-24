@@ -20,6 +20,5 @@ public class RequestPost {
     private String description;
     private int authorID;
     private int[] categoryID;
-    private String imageCV;
     private MultipartFile file;
 }

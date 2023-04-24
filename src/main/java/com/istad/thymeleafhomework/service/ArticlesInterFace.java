@@ -10,4 +10,5 @@ public interface ArticlesInterFace {
     List<Articles> getArticleByAuthorName(String name);
 
     void addNewArticle (Articles articles);
+    void deleteArticleByID(int id);
 }

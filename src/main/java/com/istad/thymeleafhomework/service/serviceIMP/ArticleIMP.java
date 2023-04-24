@@ -40,4 +40,5 @@ public class ArticleIMP implements ArticlesInterFace {
     public void deleteArticleByID(int id) {
         articleRepository.deleteArticle(id);
     }
+
 }

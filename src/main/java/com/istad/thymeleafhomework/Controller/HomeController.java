@@ -71,19 +71,17 @@ public class HomeController {
         articleService.deleteArticleByID(Integer.parseInt(id));
         return "redirect:/index";
     }
-    @GetMapping("new-article-form")
+    @GetMapping("/new-article-form")
     public String getUserForm(Model model){
         model.addAttribute("article", new RequestPost());
         model.addAttribute("authors", authorSerive.getAllAuthor());
         model.addAttribute("categories",categoryService.getAllCategory());
         return "add-new-post";
     }
-
     @PostMapping("/handleAddArticle")
     public String handleArticle(@Valid @ModelAttribute ("article") RequestPost articles,
                                 BindingResult bindingResult,
                                 Model model
-
                                 ){
         if(bindingResult.hasErrors()){
             model.addAttribute("authors", authorSerive.getAllAuthor());

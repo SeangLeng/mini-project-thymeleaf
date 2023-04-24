@@ -20,7 +20,7 @@
             <div class="d-flex justify-content-between align-item-center">
                 <a th:href="@{/author-profilev-view/{viewID}/{UserPost}(viewID = ${allArticles.id}, UserPost=${allArticles.author.name})}" class="btn btn-primary m-2">view profile</a>
                 <a th:href="@{/delete/{id}(id = ${allArticles.id})}" class="btn btn-warning m-2">Delete profile</a>
-                <a href="#" class="btn btn-primary m-2">Update profile</a>
+                <a th:href="@{/updated data/{id}(id = ${allArticles.id})" class="btn btn-primary m-2">Update profile</a>
             </div>
     </div>
 </div>
